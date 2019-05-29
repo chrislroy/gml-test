@@ -1,5 +1,6 @@
 
 import QtQuick 2.0
+import QtQuick.Controls 2.3
 import "content"
 
 // This example shows how items can be dynamically added to and removed from
@@ -29,34 +30,85 @@ Rectangle {
         id: mapDelegate
 
         Item {
+            id: map
+            width: 400
+            height: 80
 
-            id: mapItem
-            width: mapView.width; height: 80
-            clip: true
+            Rectangle {
+                id: rectangle
+                width: 80
+                height: 80
+                color: "#ffffff"
+                anchors.left: parent.left
+                anchors.leftMargin: 0
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 0
+                anchors.top: parent.top
+                anchors.topMargin: 0
 
-            Column {
-                anchors {
-                    left: parent.left
-                    horizontalCenter: parent.horizontalCenter;
-                    bottom: parent.verticalCenter
+                Image {
+                    id: image
+                    anchors.rightMargin: 5
+                    anchors.leftMargin: 5
+                    anchors.bottomMargin: 5
+                    anchors.topMargin: 5
+                    anchors.fill: parent
+                    source: "map-junk.png"
+                    fillMode: Image.PreserveAspectFit
                 }
 
+            }
+
+            Rectangle {
+                id: sliderRect
+                color: "#ffffff"
+                anchors.right: parent.right
+                anchors.rightMargin: 5
+                anchors.left: rectangle.right
+                anchors.leftMargin: 0
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 80
+                anchors.top: parent.top
+                anchors.topMargin: 0
+
+                Slider {
+                    height: 14
+                    anchors.top: parent.top
+                    anchors.topMargin: 57
+                    anchors.left: parent.left
+                    anchors.leftMargin: 5
+                    anchors.right: parent.right
+                    anchors.rightMargin: 5
+                    from: 1
+                    value: parseInt(weight)
+                    to: 100
+                }
+
+
                 Text {
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    id: mapName
+                    color: "#c95f65"
                     text: name
-                    font.pixelSize: 15
-                    color: "white"
+                    anchors.top: parent.top
+                    anchors.topMargin: 7
+                    font.bold: true
+                    lineHeight: 1.1
+                    anchors.left: parent.left
+                    anchors.leftMargin: 5
+                    font.pixelSize: 12
                 }
-
                 Text {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    text: weight
-                    font.pixelSize: 15
-                    color: "white"
+                    id: sliderLabel
+                    text: qsTr("Weignt")
+                    anchors.top: mapName.bottom
+                    anchors.topMargin: 16
+                    anchors.left: parent.left
+                    anchors.leftMargin: 5
+                    font.bold: true
+                    font.pixelSize: 12
                 }
             }
-        }
-    }
+        }    }
 
     // The view:
     ListView {

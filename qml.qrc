@@ -20,5 +20,7 @@
         <file>content/SmallText.qml</file>
         <file>content/TextButton.qml</file>
         <file>content/ToggleButton.qml</file>
+        <file>map.qml</file>
+        <file>map-junk.png</file>
     </qresource>
 </RCC>
