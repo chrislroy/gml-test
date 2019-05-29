@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>DynamicList.qml</file>
+        <file>content/pics/arrow-down.png</file>
+        <file>content/pics/arrow-up.png</file>
+        <file>content/pics/fruit-salad.jpg</file>
+        <file>content/pics/hamburger.jpg</file>
+        <file>content/pics/lemonade.jpg</file>
+        <file>content/pics/list-delete.png</file>
+        <file>content/pics/minus-sign.png</file>
+        <file>content/pics/moreDown.png</file>
+        <file>content/pics/moreUp.png</file>
+        <file>content/pics/pancakes.jpg</file>
+        <file>content/pics/plus-sign.png</file>
+        <file>content/pics/vegetable-soup.jpg</file>
+        <file>content/PetsModel.qml</file>
+        <file>content/PressAndHoldButton.qml</file>
+        <file>content/RecipesModel.qml</file>
+        <file>content/SmallText.qml</file>
+        <file>content/TextButton.qml</file>
+        <file>content/ToggleButton.qml</file>
+    </qresource>
+</RCC>
