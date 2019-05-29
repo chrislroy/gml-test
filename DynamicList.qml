@@ -26,6 +26,10 @@ Rectangle {
         id: mapModel
     }
 
+    function getPng(s) {
+        return s.slice(11, -1);
+    }
+
     Component {
         id: mapDelegate
 
@@ -53,7 +57,8 @@ Rectangle {
                     anchors.bottomMargin: 5
                     anchors.topMargin: 5
                     anchors.fill: parent
-                    source: "map-junk.png"
+                   // source: getPng(thumbnail)
+                    source : "file:///C:/Users/croy/Documents/Autodesk InfraWorks Models/Roads Tutorial (April 2019).files/unver/SoftCosts/Thumbnails/b71d55ae-543c-490c-b660-b0dd16800763.png"
                     fillMode: Image.PreserveAspectFit
                 }
 
@@ -128,6 +133,7 @@ Rectangle {
             "object" : layerObj,
             "name": layerObj["DisplayName"],
             "weight": layerObj["Weight"],
+            "thumbnail": layerObj["Thumbnail"]
         };
     }
 
