@@ -33,7 +33,7 @@ Window {
         anchors.fill: parent
 
     }
-
+/*
     Dialog {
         id: dialog
         title: "Title"
@@ -53,5 +53,5 @@ Window {
             onClicked: popDialog()
         }
     }
-
+*/
 }
