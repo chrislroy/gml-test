@@ -11,146 +11,18 @@ Rectangle {
     width: 500; height: 400
     color: "#343434"
     property string jsonFile: ""
-    Rectangle {
-        id: topRow
-        color: "#e26b6b"
-        height: 80
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-    }
-
-    MapSelector {
-        id: mapSelector
-        height: 80
-
-        anchors {
-            top: topRow.bottom
-            left: parent.left
-            leftMargin: 0
-            right: parent.right
-            rightMargin: 0
-        }
-    }
 
 
     ListModel {
         id: mapModel
     }
 
+    // functions
     function toQrc(s) {
         return s.replace("img://file/", "file:///");
     }
 
-    Component {
-        id: mapDelegate
-
-        Map {
-            id: map
-            width: 400
-            height: 80
-        }
-
-        /*
-        Item {
-            id: map
-            width: 400
-            height: 80
-
-            Rectangle {
-                id: rectangle
-                width: 80
-                height: 80
-                color: "#ffffff"
-                anchors.left: parent.left
-                anchors.leftMargin: 0
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 0
-                anchors.top: parent.top
-                anchors.topMargin: 0
-
-                Image {
-                    id: image
-                    anchors.rightMargin: 5
-                    anchors.leftMargin: 5
-                    anchors.bottomMargin: 5
-                    anchors.topMargin: 5
-                    anchors.fill: parent
-                    source: toQrc(thumbnail)
-                    fillMode: Image.PreserveAspectFit
-                }
-
-            }
-
-            Rectangle {
-                id: sliderRect
-                color: "#ffffff"
-                anchors.right: parent.right
-                anchors.rightMargin: 5
-                anchors.left: rectangle.right
-                anchors.leftMargin: 0
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 80
-                anchors.top: parent.top
-                anchors.topMargin: 0
-
-                Slider {
-                    height: 14
-                    anchors.top: parent.top
-                    anchors.topMargin: 57
-                    anchors.left: parent.left
-                    anchors.leftMargin: 5
-                    anchors.right: parent.right
-                    anchors.rightMargin: 5
-                    from: 1
-                    value: parseInt(weight)
-                    to: 100
-                }
-
-
-                Text {
-                    id: mapName
-                    color: "#c95f65"
-                    text: name
-                    anchors.top: parent.top
-                    anchors.topMargin: 7
-                    font.bold: true
-                    lineHeight: 1.1
-                    anchors.left: parent.left
-                    anchors.leftMargin: 5
-                    font.pixelSize: 12
-                }
-                Text {
-                    id: sliderLabel
-                    text: qsTr("Weignt")
-                    anchors.top: mapName.bottom
-                    anchors.topMargin: 16
-                    anchors.left: parent.left
-                    anchors.leftMargin: 5
-                    font.bold: true
-                    font.pixelSize: 12
-                }
-            }
-        }
-        */
-    }
-
-    // The view:
-    ListView {
-        id: mapView
-        anchors.topMargin: 20
-        anchors {
-            left: parent.left; top: mapSelector.bottom
-            right: parent.right; bottom: buttons.top;
-            margins: 20
-        }
-        model: mapModel
-        delegate: mapDelegate
-    }
-
-    function addMap(layerObj) {
+    function addLayer(layerObj) {
         return {
             "object" : layerObj,
             "name": layerObj["DisplayName"],
@@ -165,9 +37,72 @@ Rectangle {
         var obj = JSON.parse(jsonFile);
         var softs = obj["SoftCostLayers"];
         for (var i in softs) {
-            mapModel.append(addMap(softs[i]));
+            mapModel.append(addLayer(softs[i]));
         }
     }
+
+    // map selector
+    MapSelector {
+        id: mapSelector
+        height: 80
+
+        anchors {
+            top: parent.top
+            left: parent.left
+            leftMargin: 0
+            right: parent.right
+            rightMargin: 0
+        }
+    }
+
+    // layer title
+    Rectangle {
+        id: layerTitle
+        height: 40
+        color: "#020202"
+        anchors.top: mapSelector.bottom
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+
+        Text {
+            color: "#ffffff"
+            text: "Layers"
+            anchors.left: parent.left
+            anchors.leftMargin: 13
+            font.pointSize: 13
+            elide: Text.ElideRight
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+
+
+
+    Component {
+        id: mapDelegate
+
+        Map {
+            id: map
+            width: 400
+            height: 80
+        }
+    }
+
+    // The view:
+    ListView {
+        id: mapView
+        anchors.topMargin: 20
+        anchors {
+            left: parent.left; top: layerTitle.bottom
+            right: parent.right; bottom: buttons.top;
+            margins: 20
+        }
+        model: mapModel
+        delegate: mapDelegate
+    }
+
+
 
 
     Row {

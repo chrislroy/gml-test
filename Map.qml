@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.0
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.0
 import QtQuick.Controls 2.3
@@ -74,10 +74,10 @@ Item {
         Text {
             id: sliderLabel
             text: qsTr("Weignt")
-            anchors.top: mapName.bottom
-            anchors.topMargin: 16
+            anchors.top: parent.top
+            anchors.topMargin: 29
             anchors.left: parent.left
-            anchors.leftMargin: 5
+            anchors.leftMargin: 7
             font.bold: true
             font.pixelSize: 12
         }
