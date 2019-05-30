@@ -13,7 +13,7 @@ Window {
 
     FileIO {
         id: myFile
-        source: "E:\\dev\\qml-dynamiclist\\data\\b71d55ae-543c-490c-b660-b0dd16800763.json"
+        source: "E:\\dev\\gml-test\\data\\b71d55ae-543c-490c-b660-b0dd16800763.json"
         onError: console.log(msg)
         Component.onCompleted: {
             var data = myFile.read();
