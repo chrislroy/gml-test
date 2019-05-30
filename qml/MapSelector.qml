@@ -46,6 +46,12 @@ Rectangle {
         anchors.left: comboBox.right
         anchors.leftMargin: 12
         anchors.verticalCenter: parent.verticalCenter
+
+        onPressedChanged: {
+            console.log("Switch clicked");
+
+            applicationData.onLayerAdd("");
+        }
     }
 
     Button {

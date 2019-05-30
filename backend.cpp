@@ -14,7 +14,7 @@ Backend::~Backend()
 
 void Backend::onLayerAdd(const Dom& dom)
 {
-
+    qDebug("onLayerAdd\n");
 }
 void Backend::onLayerChange(const Dom& dom)
 {

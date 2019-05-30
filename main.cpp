@@ -4,9 +4,10 @@
 #include <QString>
 #include <QQuickView>
 #include <QQmlContext>
+#include <QDir>
 #include "fileio.h"
 #include "backend.h"
-#include "softcostpanel.h"
+
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -26,19 +27,13 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
 
-
     Backend data;
     QQuickView view;
 
-    // auto* panel = new SoftCostPanel(&engine);
-
-
     view.rootContext()->setContextProperty("applicationData", &data);
-
-    view.setSource(QUrl::fromLocalFile("qml/main.qml"));
+    qDebug() << qApp->applicationDirPath() << "\n";
+    view.setSource(QUrl::fromLocalFile(qApp->applicationDirPath() + "/qml/main.qml"));
     view.show();
-
-    // panel->show();
 
     return app.exec();
 }

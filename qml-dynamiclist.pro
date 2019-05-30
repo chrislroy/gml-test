@@ -15,8 +15,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         backend.cpp \
         fileio.cpp \
-        main.cpp \
-        softcostpanel.cpp
+        main.cpp
 
 RESOURCES += qml.qrc
 
@@ -35,5 +34,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     backend.h \
-    fileio.h \
-    softcostpanel.h
+    fileio.h

@@ -56,9 +56,7 @@ Item {
             from: 1
             value: parseInt(weight)
             to: 100
-            onPressedChanged: {
-                console.log("Switch clicked");
-            }
+
 
         }
 
