@@ -1,18 +1,24 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
+#include <QMainWindow>
 #include <QString>
-
+#include <QQuickView>
+#include <QQmlContext>
+#include <QDir>
 #include "fileio.h"
+#include "backend.h"
+
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
+
+    // qmlRegisterType<Backend>("Backend", 1, 0, "Backend");
+    qmlRegisterType<FileIO, 1>("FileIO", 1, 0, "FileIO");
 
     QQmlApplicationEngine engine;
-
-    qmlRegisterType<FileIO, 1>("FileIO", 1, 0, "FileIO");
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
@@ -20,7 +26,14 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
-    engine.load(url);
+
+    Backend data;
+    QQuickView view;
+
+    view.rootContext()->setContextProperty("applicationData", &data);
+    qDebug() << qApp->applicationDirPath() << "\n";
+    view.setSource(QUrl::fromLocalFile(qApp->applicationDirPath() + "/qml/main.qml"));
+    view.show();
 
     return app.exec();
 }

@@ -1,12 +1,14 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtQuick.Controls 2.5
 import FileIO 1.0
+import QtQuick.Dialogs.qml 1.0
 
-Window {
+
+Item {
     visible: true
     width: 640
     height: 480
-    title: qsTr("Hello World")
 
     FileIO {
         id: myFile
@@ -30,5 +32,25 @@ Window {
         anchors.fill: parent
 
     }
+/*
+    Dialog {
+        id: dialog
+        title: "Title"
+        standardButtons: Dialog.Ok | Dialog.Cancel
 
+        onAccepted: console.log("Ok clicked")
+        onRejected: console.log("Cancel clicked")
+    }
+
+    function popDialog() {
+        dialog.open();
+    }
+
+    Row {
+        Button {
+            text: "Ok"
+            onClicked: popDialog()
+        }
+    }
+*/
 }
