@@ -1,14 +1,15 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
+#include <QMainWindow>
 #include <QString>
-
 #include "fileio.h"
+#include "softcostpanel.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
 
@@ -20,7 +21,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
-    engine.load(url);
+//    engine.load(url);
+
+//    QMainWindow mainWindow;
+//    mainWindow.show();
+    auto* panel = new SoftCostPanel(&engine);
+    panel->show();
 
     return app.exec();
 }
