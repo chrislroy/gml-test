@@ -15,7 +15,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    // qmlRegisterType<Backend>("Backend", 1, 0, "Backend");
     qmlRegisterType<FileIO, 1>("FileIO", 1, 0, "FileIO");
 
     QQmlApplicationEngine engine;
@@ -34,6 +33,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qDebug() << qApp->applicationDirPath() << "\n";
     view.setSource(QUrl::fromLocalFile(qApp->applicationDirPath() + "/qml/main.qml"));
     view.show();
-
+    // data.setMap("E:\\dev\\qml-dynamiclist\\data\\b71d55ae-543c-490c-b660-b0dd16800763.json");
+    data.setMap("E:\\dev\\qml-dynamiclist\\data\\maps.json");
     return app.exec();
 }

@@ -10,10 +10,32 @@ Item {
     width: 640
     height: 480
 
+    Connections {
+        target: applicationData
+        onMapChanged: {
+            console.log("Got map changed")
+            console.log(applicationData.map)
+            mapChanged(applicationData.map)
+        }
+    }
+
+    function mapChanged(map) {
+        console.log(map);
+        myFile.source = map;
+        test.jsonFile = myFile.read();
+    }
+
     FileIO {
         id: myFile
-        source: "E:\\dev\\qml-dynamiclist\\data\\b71d55ae-543c-490c-b660-b0dd16800763.json"
+        source: "" //"E:\\dev\\qml-dynamiclist\\data\\b71d55ae-543c-490c-b660-b0dd16800763.json"
+        onSourceChanged:  {
+            console.log("onSourceChanged called")
+            var data = myFile.read();
+            test.jsonFile = data;
+        }
+
         onError: console.log(msg)
+        /*
         Component.onCompleted: {
             var data = myFile.read();
             test.jsonFile = data;
@@ -24,7 +46,9 @@ Item {
             }
             console.log("completed")
         }
+        */
     }
+
 
 
     DynamicList {
@@ -32,25 +56,5 @@ Item {
         anchors.fill: parent
 
     }
-/*
-    Dialog {
-        id: dialog
-        title: "Title"
-        standardButtons: Dialog.Ok | Dialog.Cancel
 
-        onAccepted: console.log("Ok clicked")
-        onRejected: console.log("Cancel clicked")
-    }
-
-    function popDialog() {
-        dialog.open();
-    }
-
-    Row {
-        Button {
-            text: "Ok"
-            onClicked: popDialog()
-        }
-    }
-*/
 }

@@ -30,13 +30,26 @@ Rectangle {
         };
     }
 
+    function isArray (value) {
+        return value && typeof value === 'object' && value.constructor === Array;
+    }
+
     function addMaps() {
         if (jsonFile === "")
             return;
+
         var obj = JSON.parse(jsonFile);
-        var softs = obj["SoftCostLayers"];
-        for (var i in softs) {
-            mapModel.append(addLayer(softs[i]));
+        var map = obj;
+        if (isArray(obj)) {
+            console.log("Got array")
+            map = obj[0]
+        }
+
+        // todo - add maps into to map selector
+        mapSelector.frame.image.source = ""
+        var layers = map["SuitabilityMap"]["SoftCostLayers"];
+        for (var i in layers) {
+            mapModel.append(addLayer(layers[i]));
         }
     }
 

@@ -12,6 +12,20 @@ Backend::~Backend()
 
 }
 
+QString Backend::map()
+{
+    return m_map;
+}
+
+void Backend::setMap(const QString &map)
+{
+    if (map == m_map)
+        return;
+
+    m_map = map;
+    emit mapChanged();
+}
+
 void Backend::onLayerAdd(const Dom& dom)
 {
     qDebug("onLayerAdd\n");
