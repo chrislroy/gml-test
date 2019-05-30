@@ -14,13 +14,27 @@ Rectangle {
     Rectangle {
         id: topRow
         color: "#e26b6b"
-        width: 80
+        height: 80
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.leftMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
     }
+
+    MapSelector {
+        id: mapSelector
+        height: 80
+
+        anchors {
+            top: topRow.bottom
+            left: parent.left
+            leftMargin: 0
+            right: parent.right
+            rightMargin: 0
+        }
+    }
+
 
     ListModel {
         id: mapModel
@@ -33,6 +47,13 @@ Rectangle {
     Component {
         id: mapDelegate
 
+        Map {
+            id: map
+            width: 400
+            height: 80
+        }
+
+        /*
         Item {
             id: map
             width: 400
@@ -112,14 +133,16 @@ Rectangle {
                     font.pixelSize: 12
                 }
             }
-        }    }
+        }
+        */
+    }
 
     // The view:
     ListView {
         id: mapView
         anchors.topMargin: 20
         anchors {
-            left: parent.left; top: topRow.bottom
+            left: parent.left; top: mapSelector.bottom
             right: parent.right; bottom: buttons.top;
             margins: 20
         }

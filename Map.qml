@@ -27,7 +27,7 @@ Item {
             anchors.bottomMargin: 5
             anchors.topMargin: 5
             anchors.fill: parent
-            source: "map-junk.png"
+            source: toQrc(thumbnail)
             fillMode: Image.PreserveAspectFit
         }
 
@@ -35,7 +35,7 @@ Item {
 
     Rectangle {
         id: sliderRect
-        color: white
+        color: "#ffffff"
         anchors.right: parent.right
         anchors.rightMargin: 5
         anchors.left: rectangle.right
@@ -54,7 +54,7 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: 5
             from: 1
-            value: weight
+            value: parseInt(weight)
             to: 100
         }
 
@@ -83,8 +83,3 @@ Item {
         }
     }
 }
-
-/*##^## Designer {
-    D{i:0;height:400;width:200}D{i:2;anchors_height:100;anchors_width:100}D{i:1;anchors_height:200}
-}
- ##^##*/
