@@ -1,7 +1,6 @@
 
 import QtQuick 2.0
 import QtQuick.Controls 2.3
-import "content"
 
 // This example shows how items can be dynamically added to and removed from
 // a ListModel, and how these list modifications can be animated.
@@ -111,12 +110,12 @@ Rectangle {
         anchors { bottom: parent.bottom; margins: 20 }
         spacing: 10
 
-        TextButton {
+        Button {
             text: "Add an item"
             onClicked:addMaps()
         }
 
-        TextButton {
+        Button {
             text: "Remove all items"
             onClicked: mapModel.clear()
         }

@@ -2,7 +2,10 @@
 #include <QQmlApplicationEngine>
 #include <QMainWindow>
 #include <QString>
+#include <QQuickView>
+#include <QQmlContext>
 #include "fileio.h"
+#include "backend.h"
 #include "softcostpanel.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
@@ -11,9 +14,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    QQmlApplicationEngine engine;
-
+    // qmlRegisterType<Backend>("Backend", 1, 0, "Backend");
     qmlRegisterType<FileIO, 1>("FileIO", 1, 0, "FileIO");
+
+    QQmlApplicationEngine engine;
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
@@ -21,12 +25,20 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
-//    engine.load(url);
 
-//    QMainWindow mainWindow;
-//    mainWindow.show();
-    auto* panel = new SoftCostPanel(&engine);
-    panel->show();
+
+    Backend data;
+    QQuickView view;
+
+    // auto* panel = new SoftCostPanel(&engine);
+
+
+    view.rootContext()->setContextProperty("applicationData", &data);
+
+    view.setSource(QUrl::fromLocalFile("qml/main.qml"));
+    view.show();
+
+    // panel->show();
 
     return app.exec();
 }

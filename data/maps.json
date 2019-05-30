@@ -1,0 +1,202 @@
+[
+        {
+                "File": "C:\\Users\\croy\\Documents\\Autodesk InfraWorks Models\\Roads Tutorial (April 2019).files\\unver\\SoftCosts\\SuitabilityMaps\\b71d55ae-543c-490c-b660-b0dd16800763.json",
+                "SuitabilityMap": {
+                        "ColorTheme": {
+                                "Version": "1.0.0",
+                                "Name": "Template I",
+                                "ColorMaps": [
+                                        {
+                                                "Position": 0,
+                                                "Color": "0x640000ff"
+                                        },
+                                        {
+                                                "Position": 0.25,
+                                                "Color": "0x8000ff00"
+                                        },
+                                        {
+                                                "Position": 0.5,
+                                                "Color": "0xa5ffff00"
+                                        },
+                                        {
+                                                "Position": 0.75,
+                                                "Color": "0xe2ff5a00"
+                                        },
+                                        {
+                                                "Position": 1,
+                                                "Color": "0xf0ff0000"
+                                        }
+                                ]
+                        },
+                        "Enabled": false,
+                        "Thumbnail": "img://file/C:/Users/croy/Documents/Autodesk InfraWorks Models/Roads Tutorial (April 2019).files/unver/SoftCosts/Thumbnails/b71d55ae-543c-490c-b660-b0dd16800763.png",
+                        "Version": "1.0.0",
+                        "Name": "All areas",
+                        "SoftCostLayers": [
+                                {
+                                        "DisplayName": "Buildings",
+                                        "Thumbnail": "img://file/C:/Users/croy/Documents/Autodesk InfraWorks Models/Roads Tutorial (April 2019).files/unver/SoftCosts/Thumbnails/b33842ec-1607-4520-82d4-6598365b0162.png",
+                                        "Weight": 0.5,
+                                        "Id": "b33842ec-1607-4520-82d4-6598365b0162",
+                                        "FeatureSets": [
+                                                {
+                                                        "DisplayName": "Buildings",
+                                                        "SubsetGUID": "",
+                                                        "IconPath": "C:/ProgramData/Autodesk/InfraWorks 360 Rolling Sandbox/Resources/Visual_Assets/Icons/building_32.png",
+                                                        "ClassName": "BUILDINGS",
+                                                        "Filter": ""
+                                                }
+                                        ],
+                                        "GradientFunction": "Linear",
+                                        "Parameters": [
+                                                {
+                                                        "Name": "Gradient Width",
+                                                        "Unit": "m",
+                                                        "Value": 50
+                                                },
+                                                {
+                                                        "Name": "Offset around feature",
+                                                        "Unit": "m",
+                                                        "Value": 5
+                                                }
+                                        ]
+                                },
+                                {
+                                        "DisplayName": "Water",
+                                        "Thumbnail": "img://file/C:/Users/croy/Documents/Autodesk InfraWorks Models/Roads Tutorial (April 2019).files/unver/SoftCosts/Thumbnails/f1c36248-d9f1-4441-bca1-c5241a6daa76.png",
+                                        "Weight": 0.19,
+                                        "Id": "f1c36248-d9f1-4441-bca1-c5241a6daa76",
+                                        "FeatureSets": [
+                                                {
+                                                        "DisplayName": "Water Areas",
+                                                        "SubsetGUID": "",
+                                                        "IconPath": "C:/ProgramData/Autodesk/InfraWorks 360 Rolling Sandbox/Resources/Visual_Assets/Icons/watercover_32.png",
+                                                        "ClassName": "WATER_AREAS",
+                                                        "Filter": ""
+                                                },
+                                                {
+                                                        "DisplayName": "Streams",
+                                                        "SubsetGUID": "",
+                                                        "IconPath": "C:/ProgramData/Autodesk/InfraWorks 360 Rolling Sandbox/Resources/Visual_Assets/Icons/ModelExplorer_Streams_32.png",
+                                                        "ClassName": "STREAMS",
+                                                        "Filter": ""
+                                                }
+                                        ],
+                                        "GradientFunction": "Linear",
+                                        "Parameters": [
+                                                {
+                                                        "Name": "Gradient Width",
+                                                        "Unit": "m",
+                                                        "Value": 50
+                                                },
+                                                {
+                                                        "Name": "Offset around feature",
+                                                        "Unit": "m",
+                                                        "Value": 0
+                                                }
+                                        ]
+                                },
+                                {
+                                        "DisplayName": "Roads",
+                                        "Thumbnail": "img://file/C:/Users/croy/Documents/Autodesk InfraWorks Models/Roads Tutorial (April 2019).files/unver/SoftCosts/Thumbnails/81b387f9-6c19-413d-983a-f55c7f41008c.png",
+                                        "Weight": 0.22,
+                                        "Id": "81b387f9-6c19-413d-983a-f55c7f41008c",
+                                        "FeatureSets": [
+                                                {
+                                                        "DisplayName": "Roads",
+                                                        "SubsetGUID": "",
+                                                        "IconPath": "C:/ProgramData/Autodesk/InfraWorks 360 Rolling Sandbox/Resources/Visual_Assets/Icons/transportation_32.png",
+                                                        "ClassName": "ROADS",
+                                                        "Filter": ""
+                                                }
+                                        ],
+                                        "GradientFunction": "Linear",
+                                        "Parameters": [
+                                                {
+                                                        "Name": "Gradient Width",
+                                                        "Unit": "m",
+                                                        "Value": 50
+                                                },
+                                                {
+                                                        "Name": "Offset around feature",
+                                                        "Unit": "m",
+                                                        "Value": 0
+                                                }
+                                        ]
+                                }
+                        ]
+                }
+        },
+        {
+                "File": "C:\\Users\\croy\\Documents\\Autodesk InfraWorks Models\\Roads Tutorial (April 2019).files\\unver\\SoftCosts\\SuitabilityMaps\\ed7b7c99-1150-4a71-afa5-cd2ef5565c18.json",
+                "SuitabilityMap": {
+                        "ColorTheme": {
+                                "Version": "1.0.0",
+                                "Name": "Template I",
+                                "ColorMaps": [
+                                        {
+                                                "Position": 0,
+                                                "Color": "0x640000ff"
+                                        },
+                                        {
+                                                "Position": 0.25,
+                                                "Color": "0x8000ff00"
+                                        },
+                                        {
+                                                "Position": 0.5,
+                                                "Color": "0xa5ffff00"
+                                        },
+                                        {
+                                                "Position": 0.75,
+                                                "Color": "0xe2ff5a00"
+                                        },
+                                        {
+                                                "Position": 1,
+                                                "Color": "0xf0ff0000"
+                                        }
+                                ]
+                        },
+                        "Enabled": true,
+                        "Thumbnail": "img://file/C:/Users/croy/Documents/Autodesk InfraWorks Models/Roads Tutorial (April 2019).files/unver/SoftCosts/Thumbnails/ed7b7c99-1150-4a71-afa5-cd2ef5565c18.png",
+                        "Version": "1.0.0",
+                        "Name": "Suitability Map(1)",
+                        "SoftCostLayers": [
+                                {
+                                        "DisplayName": "test",
+                                        "Thumbnail": "img://file/C:/Users/croy/Documents/Autodesk InfraWorks Models/Roads Tutorial (April 2019).files/unver/SoftCosts/Thumbnails/3b87e467-acef-45fb-bb85-c39732ab4036.png",
+                                        "Weight": 0.41999999999999998,
+                                        "Id": "3b87e467-acef-45fb-bb85-c39732ab4036",
+                                        "FeatureSets": [
+                                                {
+                                                        "DisplayName": "Coverage Areas",
+                                                        "SubsetGUID": "",
+                                                        "IconPath": "E:/dev/Autodesk/infraworks-desktop/Desktop/Output/x64/Release/Resources/Visual_Assets/Icons/coverage_32.png",
+                                                        "ClassName": "COVERAGES",
+                                                        "Filter": ""
+                                                },
+                                                {
+                                                        "DisplayName": "Culverts",
+                                                        "SubsetGUID": "",
+                                                        "IconPath": "E:/dev/Autodesk/infraworks-desktop/Desktop/Output/x64/Release/Resources/Visual_Assets/Icons/culvert_32.png",
+                                                        "ClassName": "CULVERTS",
+                                                        "Filter": ""
+                                                }
+                                        ],
+                                        "GradientFunction": "Linear",
+                                        "Parameters": [
+                                                {
+                                                        "Name": "Gradient Width",
+                                                        "Unit": "m",
+                                                        "Value": 50
+                                                },
+                                                {
+                                                        "Name": "Offset around feature",
+                                                        "Unit": "m",
+                                                        "Value": 0
+                                                }
+                                        ]
+                                }
+                        ]
+                }
+        }
+]
