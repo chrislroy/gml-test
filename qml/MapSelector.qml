@@ -33,9 +33,9 @@ Item {
             }
             mapModel.append( { mapName : theMap[j]["SuitabilityMap"]["Name"] })
         }
+        mapModel.append( { mapName : "Create new map..." })
 
         // update the layer model
-
         if (currentIndex !== -1) {
             currentMap = currentIndex;
             thumbnail = theMap[currentIndex]["SuitabilityMap"]["Thumbnail"];
@@ -63,9 +63,7 @@ Item {
     }
 
     onSuitabilityMapChanged: {
-
         updateUi();
-
     }
 
 
@@ -76,8 +74,10 @@ Item {
 
     // disable suitability map or enable current map
     function updateAllMaps(checked) {
+
         console.log("update all maps " + checked)
         console.log("SM:\n" + suitabilityMap);
+        comboBox.enabled = checked
         var maps = JSON.parse(suitabilityMap);
         for(var i in maps) {
             maps[i]["SuitabilityMap"]["Enabled"] = checked
@@ -92,6 +92,7 @@ Item {
     }
 
     function setCurrentMap(mapIndex) {
+
         currentMap = mapIndex;
         var maps = JSON.parse(suitabilityMap);
         for(var i in maps) {
@@ -101,8 +102,8 @@ Item {
                 maps[i]["SuitabilityMap"]["Enabled"] = false
         }
 
-        var newMap = JSON.stringify(maps);
-        applicationData.onSuitabilityMapChange(newMap);
+        //updateAllMaps(true);
+        applicationData.onSuitabilityMapChange(JSON.stringify(maps));
     }
 
     // combo box model

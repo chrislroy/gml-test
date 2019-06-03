@@ -1,5 +1,6 @@
 #include "Backend.h"
 #include <QQmlApplicationEngine>
+#include <QTimer>
 
 Backend::Backend(QObject * parent)
     : QObject(parent)
@@ -57,8 +58,9 @@ void Backend::onSuitabilityMapDelete(const QString& dom)
 void Backend::onSuitabilityMapChange(const QString& dom)
 {
     qDebug("onSuitabilityMapChange\n");
+    qDebug(qPrintable(dom));
 
-    //setMap(dom);
+    //QTimer::singleShot(200, [=](){ setMap(dom); } );
 }
 
 void Backend::onSuitabilityMapActive(const QString& dom)
