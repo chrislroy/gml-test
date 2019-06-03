@@ -26,9 +26,9 @@ Item {
         var theMap = JSON.parse(suitabilityMap);
 
         // iupdate the map model
-        var currentIndex = -1
+        var currentIndex = ""
         for(var j in theMap) {
-            if (theMap[j]["SuitabilityMap"]["Enabled"] && currentIndex === -1) {
+            if (theMap[j]["SuitabilityMap"]["Enabled"] && currentIndex === "") {
                 currentIndex = j;
             }
             mapModel.append( { mapName : theMap[j]["SuitabilityMap"]["Name"] })
@@ -36,8 +36,8 @@ Item {
         mapModel.append( { mapName : "Create new map..." })
 
         // update the layer model
-        if (currentIndex !== -1) {
-            currentMap = currentIndex;
+        if (currentIndex !== "") {
+            currentMap = parseInt(currentIndex, 10);
             thumbnail = theMap[currentIndex]["SuitabilityMap"]["Thumbnail"];
             var layers = theMap[currentIndex]["SuitabilityMap"]["SoftCostLayers"];
             for (var i in layers) {
@@ -45,7 +45,7 @@ Item {
                 layerList.addLayer(layers[i]);
             }
 
-            comboBox.currentIndex = currentIndex;
+            comboBox.currentIndex = currentMap;
         }
     }
 
@@ -78,6 +78,7 @@ Item {
         console.log("update all maps " + checked)
         console.log("SM:\n" + suitabilityMap);
         comboBox.enabled = checked
+        var mapIndex = currentMap
         var maps = JSON.parse(suitabilityMap);
         for(var i in maps) {
             maps[i]["SuitabilityMap"]["Enabled"] = checked
@@ -85,18 +86,22 @@ Item {
 
         if (checked === false)
             layerList.clearModel();
-        else
+        else {
             updateUi();
+            comboBox.currentIndex = mapIndex;
+        }
 
         applicationData.onSuitabilityMapChange(JSON.stringify(maps));
     }
 
     function setCurrentMap(mapIndex) {
 
+        if (currentMap === mapIndex)
+            return;
         currentMap = mapIndex;
         var maps = JSON.parse(suitabilityMap);
         for(var i in maps) {
-            if (i === currentMap)
+            if (i === currentMap.toString())
                 maps[i]["SuitabilityMap"]["Enabled"] = true
             else
                 maps[i]["SuitabilityMap"]["Enabled"] = false
@@ -104,6 +109,7 @@ Item {
 
         //updateAllMaps(true);
         applicationData.onSuitabilityMapChange(JSON.stringify(maps));
+        //updateUi();
     }
 
     // combo box model
@@ -169,7 +175,6 @@ Item {
                         color:  "#343434"
                         text: mapName
                     }
-
                 }
             }
 
@@ -187,24 +192,13 @@ Item {
                 onDoubleClicked: mouse.accepted = false
                 onPositionChanged: mouse.accepted = false
                 onPressAndHold: mouse.accepted = false
-/*
-                onEntered:
-                {
-                    item.highlighted = true
-                }
-
-                onExited:
-                {
-                    item.highlighted = false
-                }
-*/
              }
 
              onCurrentIndexChanged: {
                  console.log("onCurrentIndexChanged\n");
                 if (currentIndex !== -1) {
                     console.log(currentIndex);
-                   setCurrentMap(currentIndex)
+                    setCurrentMap(currentIndex)
                 }
              }
 
@@ -253,7 +247,9 @@ Item {
         id: layerList
         anchors.topMargin: 20
         anchors {
-            left: parent.left; top: layerTitle.bottom
+            left: parent.left;
+            top: layerTitle.bottom;
+            bottom: parent.bottom
             right: parent.right;
             margins: 20
         }

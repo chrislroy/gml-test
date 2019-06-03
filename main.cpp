@@ -33,7 +33,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qDebug() << qApp->applicationDirPath() << "\n";
     view.setSource(QUrl::fromLocalFile(qApp->applicationDirPath() + "/qml/main.qml"));
     view.show();
-    // data.setMap("E:\\dev\\qml-dynamiclist\\data\\b71d55ae-543c-490c-b660-b0dd16800763.json");
-    data.setMap("E:\\dev\\qml-dynamiclist\\data\\maps.json");
+
+    FileIO map;
+    map.setSource("E:\\dev\\qml-dynamiclist\\data\\maps.json");
+    data.setMap(map.read());
     return app.exec();
 }

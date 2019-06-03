@@ -39,6 +39,7 @@ Rectangle {
             leftMargin: 0
             right: parent.right
             rightMargin: 0
+            bottom: buttons.top
         }
     }
 
@@ -46,9 +47,9 @@ Rectangle {
     Row {
         id: buttons
         anchors.horizontalCenter: parent.horizontalCenter
+        height: 40
         anchors {
-            top: maps.bottom; bottom: parent.bottom
-            margins: 20
+            bottom: parent.bottom
         }
         spacing: 10
 

@@ -20,20 +20,8 @@ Item {
 
     function onMapChanged(map) {
         console.log(map);
-        myFile.source = map;
-        suitabilityMap.jsonFile = myFile.read();
-    }
 
-    FileIO {
-        id: myFile
-        source: ""
-        onSourceChanged:  {
-            console.log("onSourceChanged called")
-            var data = myFile.read();
-            suitabilityMap.jsonFile = data;
-        }
-
-        onError: console.log(msg)
+        suitabilityMap.jsonFile = map;
     }
 
     SuitabilityMap {
