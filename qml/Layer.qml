@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls 2.3
 
 Item {
-    id: map
+    id: layer
     width: 400
     height: 80
 
@@ -46,6 +46,7 @@ Item {
         anchors.topMargin: 0
 
         Slider {
+            id: slider
             height: 14
             anchors.top: parent.top
             anchors.topMargin: 57
@@ -62,7 +63,7 @@ Item {
 
 
         Text {
-            id: mapName
+            id: layerName
             color: "#c95f65"
             text: name
             anchors.top: parent.top
@@ -74,7 +75,7 @@ Item {
             font.pixelSize: 12
         }
         Text {
-            id: sliderLabel
+            id: weightSlider
             text: qsTr("Weignt")
             anchors.top: parent.top
             anchors.topMargin: 29

@@ -18,10 +18,10 @@
         <file>content/SmallText.qml</file>
         <file>content/TextButton.qml</file>
         <file>content/ToggleButton.qml</file>
-        <file>qml/DynamicList.qml</file>
         <file>qml/main.qml</file>
-        <file>qml/Map.qml</file>
         <file>qml/MapSelector.qml</file>
-        <file>qml/sections.qml</file>
+        <file>qml/SuitabilityMap.qml</file>
+        <file>qml/LayerList.qml</file>
+        <file>qml/Layer.qml</file>
     </qresource>
 </RCC>
