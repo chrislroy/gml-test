@@ -26,40 +26,55 @@ void Backend::setMap(const QString &map)
     emit mapChanged();
 }
 
-void Backend::onLayerAdd(const Dom& dom)
+
+void Backend::onLayerAdd(const QString& dom)
 {
     qDebug("onLayerAdd\n");
 }
-void Backend::onLayerChange(const Dom& dom)
+void Backend::onLayerChange(const QString& dom)
 {
+    qDebug("onLayerChange\n");
 
 }
-void Backend::onLayerDelete(const Dom& dom)
+void Backend::onLayerDelete(const QString& dom)
 {
+    qDebug("onLayerDelete\n");
 
 }
 //void onColorChange(const Dom& dom);
-void Backend::onSuitabilityMapAdd(const Dom& dom)
+void Backend::onSuitabilityMapAdd(const QString& dom)
 {
+    qDebug("onSuitabilityMapAdd\n");
+
+    //m_map = dom;
 
 }
-void Backend::onSuitabilityMapDelete(const Dom& dom)
+void Backend::onSuitabilityMapDelete(const QString& dom)
 {
+    qDebug("onSuitabilityMapDelete\n");
 
 }
-void Backend::onSuitabilityMapChange(const Dom& dom)
+void Backend::onSuitabilityMapChange(const QString& dom)
 {
+    qDebug("onSuitabilityMapChange\n");
+
+    //setMap(dom);
+}
+
+void Backend::onSuitabilityMapActive(const QString& dom)
+{
+    qDebug("onSuitabilityMapActive\n");
 
 }
-void Backend::onSuitabilityMapActive(const Dom& dom)
+
+void Backend::onSelectFeatureSets(const QString& dom)
 {
+    qDebug("onSelectFeatureSets\n");
 
 }
-void Backend::onSelectFeatureSets(const Dom& dom)
-{
 
-}
-void Backend::onRefreshModel(const Dom& dom)
+void Backend::onRefreshModel(const QString& dom)
 {
+    qDebug("onRefreshModel\n");
 
 }

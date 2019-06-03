@@ -11,49 +11,104 @@ Item {
     width: 200
     height: 60
     property string suitabilityMap: ""
-    property string currentMap: ""
+    property int currentMap: -1
     property string thumbnail: ""
 
-    onSuitabilityMapChanged: {
-        // console.log("onSuitabilityMapChanged:" + suitabilityMap)
+    function updateUi() {
+
+        console.log("updateUi:" + suitabilityMap)
         layerList.clearModel();
+        comboBox.model.clear()
         if (suitabilityMap === "") {
             return;
         }
 
         var theMap = JSON.parse(suitabilityMap);
 
-        comboBox.model.clear()
+        // iupdate the map model
+        var currentIndex = -1
         for(var j in theMap) {
+            if (theMap[j]["SuitabilityMap"]["Enabled"] && currentIndex === -1) {
+                currentIndex = j;
+            }
             mapModel.append( { mapName : theMap[j]["SuitabilityMap"]["Name"] })
         }
-        comboBox.currentIndex = 0;
-        currentMap = theMap[0]["SuitabilityMap"]["Name"];
-        thumbnail = theMap[0]["SuitabilityMap"]["Thumbnail"];
-        var layers = theMap[0]["SuitabilityMap"]["SoftCostLayers"];
-        for (var i in layers) {
-            console.log("adding layer " + layers[i]["DisplayName"])
-            layerList.addLayer(layers[i]);
+
+        // update the layer model
+
+        if (currentIndex !== -1) {
+            currentMap = currentIndex;
+            thumbnail = theMap[currentIndex]["SuitabilityMap"]["Thumbnail"];
+            var layers = theMap[currentIndex]["SuitabilityMap"]["SoftCostLayers"];
+            for (var i in layers) {
+                console.log("adding layer " + layers[i]["DisplayName"])
+                layerList.addLayer(layers[i]);
+            }
+
+            comboBox.currentIndex = currentIndex;
         }
     }
+
+    function refreshUi() {
+        if (currentMap != comboBox.currentIndex && comboBox.currentIndex !== -1) {
+            currentMap = comboBox.currentIndex;
+
+            thumbnail = theMap[comboBox.currentIndex]["SuitabilityMap"]["Thumbnail"];
+            var layers = theMap[comboBox.currentIndex]["SuitabilityMap"]["SoftCostLayers"];
+            for (var i in layers) {
+                console.log("adding layer " + layers[i]["DisplayName"])
+                layerList.addLayer(layers[i]);
+            }
+        }
+    }
+
+    onSuitabilityMapChanged: {
+
+        updateUi();
+
+    }
+
 
     // functions
     function toQrc(s) {
         return s.replace("img://file/", "file:///");
     }
 
+    // disable suitability map or enable current map
     function updateAllMaps(checked) {
         console.log("update all maps " + checked)
-        var theMap = JSON.parse(suitabilityMap);
+        console.log("SM:\n" + suitabilityMap);
+        var maps = JSON.parse(suitabilityMap);
+        for(var i in maps) {
+            maps[i]["SuitabilityMap"]["Enabled"] = checked
+        }
 
+        if (checked === false)
+            layerList.clearModel();
+        else
+            updateUi();
+
+        applicationData.onSuitabilityMapChange(JSON.stringify(maps));
+    }
+
+    function setCurrentMap(mapIndex) {
+        currentMap = mapIndex;
+        var maps = JSON.parse(suitabilityMap);
+        for(var i in maps) {
+            if (i === currentMap)
+                maps[i]["SuitabilityMap"]["Enabled"] = true
+            else
+                maps[i]["SuitabilityMap"]["Enabled"] = false
+        }
+
+        var newMap = JSON.stringify(maps);
+        applicationData.onSuitabilityMapChange(newMap);
     }
 
     // combo box model
     ListModel {
         id: mapModel
     }
-
-
 
     Rectangle {
         id: selector
@@ -121,6 +176,7 @@ Item {
             {
                 anchors.fill: parent
 
+
                 hoverEnabled: true
                 propagateComposedEvents: true
 
@@ -130,7 +186,7 @@ Item {
                 onDoubleClicked: mouse.accepted = false
                 onPositionChanged: mouse.accepted = false
                 onPressAndHold: mouse.accepted = false
-
+/*
                 onEntered:
                 {
                     item.highlighted = true
@@ -140,11 +196,17 @@ Item {
                 {
                     item.highlighted = false
                 }
+*/
              }
+
              onCurrentIndexChanged: {
-                 console.log("Combo changed-new index:" + currentIndex)
-                 console.log(mapModel.get(currentIndex)["mapName"])
+                 console.log("onCurrentIndexChanged\n");
+                if (currentIndex !== -1) {
+                    console.log(currentIndex);
+                   setCurrentMap(currentIndex)
+                }
              }
+
         }
 
         // turn map on or off

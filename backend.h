@@ -23,16 +23,17 @@ signals:
     void mapChanged();
 
 public slots:
-    void onLayerAdd(const Dom& dom);
-    void onLayerChange(const Dom& dom);
-    void onLayerDelete(const Dom& dom);
+
+    void onLayerAdd(const QString& dom);
+    void onLayerChange(const QString& dom);
+    void onLayerDelete(const QString& dom);
     //void onColorChange(const Dom& dom);
-    void onSuitabilityMapAdd(const Dom& dom);
-    void onSuitabilityMapDelete(const Dom& dom);
-    void onSuitabilityMapChange(const Dom& dom);
-    void onSuitabilityMapActive(const Dom& dom);
-    void onSelectFeatureSets(const Dom& dom);
-    void onRefreshModel(const Dom& dom);
+    void onSuitabilityMapAdd(const QString& dom);
+    void onSuitabilityMapDelete(const QString& dom);
+    void onSuitabilityMapChange(const QString& dom);
+    void onSuitabilityMapActive(const QString& dom);
+    void onSelectFeatureSets(const QString& dom);
+    void onRefreshModel(const QString& dom);
 
 private:
     QString m_map;
