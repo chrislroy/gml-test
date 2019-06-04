@@ -4,9 +4,22 @@
 #include <QString>
 #include <QQuickView>
 #include <QQmlContext>
+#include <QJsonDocument>
 #include <QDir>
 #include "fileio.h"
 #include "backend.h"
+
+QJsonDocument loadJson(QString fileName) {
+    QFile jsonFile(fileName);
+    jsonFile.open(QFile::ReadOnly);
+    return QJsonDocument().fromJson(jsonFile.readAll());
+}
+
+void saveJson(QJsonDocument document, QString fileName) {
+    QFile jsonFile(fileName);
+    jsonFile.open(QFile::WriteOnly);
+    jsonFile.write(document.toJson());
+}
 
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
@@ -35,7 +48,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     view.show();
 
     FileIO map;
-    map.setSource("E:\\dev\\qml-dynamiclist\\data\\maps.json");
-    data.setMap(map.read());
+    map.setSource("E:\\dev\\qml-dynamiclist\\data\\maps.json");  // this is a text file containing 2 maps
+    data.setMapPanelData(map.read());
     return app.exec();
 }

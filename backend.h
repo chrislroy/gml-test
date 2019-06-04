@@ -2,25 +2,24 @@
 #define BACKEND_H
 
 #include <QtCore/QObject>
-
+#include <QJsonDocument>
 
 typedef QString Dom;
-
 
 class Backend : public QObject {
     Q_OBJECT
 
-    Q_PROPERTY(QString map READ map WRITE setMap NOTIFY mapChanged)
+    Q_PROPERTY(Dom mapPanelData READ mapPanelData WRITE setMapPanelData NOTIFY mapPanelDataChanged)
 
 public:
     Backend(QObject* parent = nullptr);
     ~Backend();
 
-    QString map();
-    void setMap(const QString &map);
+    Dom mapPanelData();
+    void setMapPanelData(const Dom &map);
 
 signals:
-    void mapChanged();
+    void mapPanelDataChanged();
 
 public slots:
 
@@ -36,7 +35,7 @@ public slots:
     void onRefreshModel(const QString& dom);
 
 private:
-    QString m_map;
+    Dom m_mapPanelData;
 };
 
 #endif // BACKEND_H

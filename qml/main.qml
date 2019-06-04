@@ -12,16 +12,17 @@ Item {
 
     Connections {
         target: applicationData
-        onMapChanged: {
-            console.log("Got map changed " + applicationData.map)
-            onMapChanged(applicationData.map)
+        onMapPanelDataChanged: {
+            console.log("Got map changed " + applicationData.mapPanelData)
+            onMapPanelDataChanged(applicationData.mapPanelData)
         }
     }
 
-    function onMapChanged(map) {
-        console.log(map);
+    // called when IW calls setMapPanelData()
+    function onMapPanelDataChanged(map) {
 
-        suitabilityMap.jsonFile = map;
+        suitabilityMap.jsonFile = JSON.parse(map);
+        console.log(suitabilityMap.jsonFile);
     }
 
     SuitabilityMap {

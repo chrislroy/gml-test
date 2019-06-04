@@ -73,25 +73,22 @@ Item {
     }
 
     // disable suitability map or enable current map
-    function updateAllMaps(checked) {
+    function activeMap(checked) {
 
         console.log("update all maps " + checked)
         console.log("SM:\n" + suitabilityMap);
+
         comboBox.enabled = checked
-        var mapIndex = currentMap
+
+        // disable all maps - call onSuitabilityMapChange with null Dom
+        if (!checked) {
+            applicationData.onSuitabilityMapActive(""); // TODO - replace string with Dom object
+            return;
+        }
+
+        // call onSuitabilityMapChange with map file name that must be active
         var maps = JSON.parse(suitabilityMap);
-        for(var i in maps) {
-            maps[i]["SuitabilityMap"]["Enabled"] = checked
-        }
-
-        if (checked === false)
-            layerList.clearModel();
-        else {
-            updateUi();
-            comboBox.currentIndex = mapIndex;
-        }
-
-        applicationData.onSuitabilityMapChange(JSON.stringify(maps));
+        applicationData.onSuitabilityMapActive(maps[currentMap]["File"]);
     }
 
     function setCurrentMap(mapIndex) {
@@ -107,9 +104,7 @@ Item {
                 maps[i]["SuitabilityMap"]["Enabled"] = false
         }
 
-        //updateAllMaps(true);
         applicationData.onSuitabilityMapChange(JSON.stringify(maps));
-        //updateUi();
     }
 
     // combo box model
@@ -197,8 +192,8 @@ Item {
              onCurrentIndexChanged: {
                  console.log("onCurrentIndexChanged\n");
                 if (currentIndex !== -1) {
-                    console.log(currentIndex);
-                    setCurrentMap(currentIndex)
+                    var maps = JSON.parse(suitabilityMap);
+                    applicationData.onSuitabilityMapActive(maps[currentIndex]["File"]);
                 }
              }
 
@@ -215,7 +210,7 @@ Item {
 
             onPressedChanged: {
                 console.log("Switch clicked");
-                updateAllMaps(mapOn.checked)
+                activateMap(mapOn.checked)
             }
         }
     }

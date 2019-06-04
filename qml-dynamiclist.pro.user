@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.9.0, 2019-05-30T14:20:19. -->
+<!-- Written by QtCreator 4.9.0, 2019-06-04T12:51:56. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -96,7 +96,7 @@
       <value type="bool" key="Qt4ProjectManager.MakeStep.OverrideMakeflags">false</value>
      </valuemap>
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.2">
-      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
+      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">false</value>
       <value type="QString" key="ProjectExplorer.ProcessStep.Arguments">%{buildDir}/debug  --qmldir e:\dev\qml-dynamiclist\qml </value>
       <value type="QString" key="ProjectExplorer.ProcessStep.Command">C:/Qt/5.12.0/msvc2017_64/bin/windeployqt.exe</value>
       <value type="QString" key="ProjectExplorer.ProcessStep.WorkingDirectory">%{buildDir}</value>
@@ -170,7 +170,7 @@
       <value type="bool" key="Qt4ProjectManager.MakeStep.OverrideMakeflags">false</value>
      </valuemap>
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.2">
-      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
+      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">false</value>
       <value type="QString" key="ProjectExplorer.ProcessStep.Arguments">%{buildDir}/release  --qmldir e:\dev\qml-dynamiclist\qml </value>
       <value type="QString" key="ProjectExplorer.ProcessStep.Command">C:/Qt/5.12.0/msvc2017_64/bin/windeployqt.exe</value>
       <value type="QString" key="ProjectExplorer.ProcessStep.WorkingDirectory">%{buildDir}</value>
