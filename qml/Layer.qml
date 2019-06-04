@@ -59,8 +59,8 @@ Rectangle {
             anchors.leftMargin: 5
             anchors.right: parent.right
             anchors.rightMargin: 5
-            from: 1
-            value: parseInt(weight)
+            from: 0
+            value: parseFloat(weight) * 100
             to: 100
 
 
