@@ -14,7 +14,7 @@ Item {
 
     function addLayer(layerObj) {
         layerModel.append({
-            "object" : layerObj,
+            "object" : layerObj, //JSON.stringify(layerObj),
             "name": layerObj["DisplayName"],
             "weight": layerObj["Weight"],
             "thumbnail": layerObj["Thumbnail"]

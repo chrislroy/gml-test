@@ -7,7 +7,7 @@ Rectangle {
     id: layer
     width: 400
     height: 80
-
+    property double sliderValue : 0
     anchors {
         left: parent.left
         right:parent.right
@@ -62,7 +62,15 @@ Rectangle {
             from: 0
             value: parseFloat(weight) * 100
             to: 100
-
+            onValueChanged: {
+                sliderValue = value / 100;
+                //var t = JSON.parse(object);
+                object["Weight"] = sliderValue;
+                var s = JSON.stringify(object)
+                console.log(s);
+                applicationData.onLayerChange(s)
+                console.log(sliderValue)
+            }
 
         }
 
@@ -81,7 +89,7 @@ Rectangle {
         }
         Text {
             id: weightSlider
-            text: qsTr("Weignt")
+            text: qsTr("Weight")
             anchors.top: parent.top
             anchors.topMargin: 29
             anchors.left: parent.left
