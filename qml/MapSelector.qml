@@ -246,6 +246,7 @@ Item {
     LayerList {
         id: layerList
         anchors.topMargin: 20
+
         anchors {
             left: parent.left;
             top: layerTitle.bottom;

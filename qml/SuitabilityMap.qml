@@ -31,7 +31,7 @@ Rectangle {
     // map selector
     MapSelector {
         id: maps
-        height: 80
+        height: 300
 
         anchors {
             top: parent.top
@@ -50,6 +50,7 @@ Rectangle {
         height: 40
         anchors {
             bottom: parent.bottom
+            bottomMargin: 20
         }
         spacing: 10
 

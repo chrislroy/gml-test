@@ -42,6 +42,16 @@ Item {
 
     // The view:
     ListView {
+
+        anchors {
+            top: parent.top
+            left: parent.left
+            leftMargin: 0
+            right: parent.right
+            rightMargin: 0
+            bottom: parent.bottom
+        }
+
         id: layerView
         model: layerModel
         delegate: layerDelegate

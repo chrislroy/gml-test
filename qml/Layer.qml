@@ -3,10 +3,15 @@ import QtQuick.Window 2.12
 import QtQuick.Layouts 1.0
 import QtQuick.Controls 2.3
 
-Item {
+Rectangle {
     id: layer
     width: 400
     height: 80
+
+    anchors {
+        left: parent.left
+        right:parent.right
+    }
 
     Rectangle {
         id: rectangle
